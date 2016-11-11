@@ -2,6 +2,7 @@ package com.chandu.revigas;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -26,43 +27,83 @@ public class LoginActivity extends BaseAppCompatActivity {
     RequestQueue requestQueue;
     Button login;
     String mUserEmail;
+    String mPassword;
+
+    EditText mUserNameField;
+    EditText mPasswordField;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        requestQueue = Volley.newRequestQueue(this);
 
     }
 
 
     public void showHome(View v) {
 
-        EditText userNameField = (EditText) findViewById(R.id.username);
-        mUserEmail = userNameField.getText().toString();
+        mUserNameField = (EditText) findViewById(R.id.username);
+         mPasswordField = (EditText) findViewById(R.id.password);
+       attemptLogin();
+    }
 
-        EditText passwordField = (EditText) findViewById(R.id.password);
-        String sPassword = passwordField.getText().toString();
+    private void attemptLogin() {
+        /*if (mAuthTask != null) {
+            return;
+        }*/
 
-        String params = String.format("username=%s&password=%s", mUserEmail, sPassword);
+        // Reset errors.
+        mUserNameField.setError(null);
+        mPasswordField.setError(null);
 
-        if ((mUserEmail.matches("")) || (sPassword.matches(""))) {
+        // Store values at the time of the login attempt.
+        mUserEmail = mUserNameField.getText().toString();
+        mPassword = mPasswordField.getText().toString();
 
-            Toast.makeText(this, "Please Enter the details", Toast.LENGTH_SHORT).show();
+        boolean cancel = false;
+        View focusView = null;
 
+        // Check for a valid password, if the user entered one.
+        /*if (!TextUtils.isEmpty(password) ) {
+            mPasswordField.setError("Invalid password");
+            focusView = mPasswordField;
+            cancel = true;
+        }
+*/
+        // Check for a valid mobile number.
+        if (TextUtils.isEmpty(mUserEmail)) {
+            mUserNameField.setError(getString(R.string.error_field_required));
+            focusView = mUserNameField;
+            cancel = true;
+        } /*else if (!isValidMobile(poneNo)) {
+            mPhoneNoView.setError(getString(R.string.error_invalid_mobile));
+            focusView = mPhoneNoView;
+            cancel = true;
+        }*/
+        if (TextUtils.isEmpty(mPassword)) {
+            mPasswordField.setError(getString(R.string.error_field_required));
+            focusView = mPasswordField;
+            cancel = true;
+        }
+
+        if (cancel) {
+            // There was an error; don't attempt login and focus the first
+            // form field with an error.
+            focusView.requestFocus();
         } else {
-            /*showProgress("Logging in,please wait...");
-            checkLoginWith(params);*/
+            // Show a progress spinner, and kick off a background task to
+            // perform the user login attempt.
+//            NetworkManager.getInstance().postRequest(Constants.API_LOGIN,getParams(),this);
 
-            Intent i = new Intent(LoginActivity.this , Home.class);
-            i.putExtra("user_id",mUserEmail);
-            startActivity(i);
-
+            showProgress("Logging in,please wait...");
+            checkLoginWith();
         }
     }
 
-    public void checkLoginWith (String params){
+    public void checkLoginWith (){
+        requestQueue = Volley.newRequestQueue(this);
+        String params = String.format("username=%s&password=%s", mUserEmail, mPassword);
         Log.d(TAG,"login  "+loginURL);
         Log.d(TAG,"params "+params);
         final JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, loginURL, params , new Response.Listener<JSONObject>() {
@@ -76,7 +117,7 @@ public class LoginActivity extends BaseAppCompatActivity {
 
                 String user_id  = null;
                 try {
-                    user_id = response.getString("IDUSER");
+                    user_id = response.getString("email");
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

@@ -40,7 +40,7 @@ public class InformationActivity extends BaseAppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_information);
-        mRecyclerView = (RecyclerView) findViewById(R.id.lv_tickets);
+        mRecyclerView = (RecyclerView) findViewById(R.id.lv_informations);
         mTextViewEmpty = (TextView) findViewById(R.id.tv_empty);
         mRecyclerView.addOnItemTouchListener(new RecyclerTouchListener(this, mRecyclerView, new ClickListener() {
             @Override
@@ -50,6 +50,18 @@ public class InformationActivity extends BaseAppCompatActivity {
                 Intent intent = new Intent(InformationActivity.this,InformationActivity.class);
                 intent.putExtra("KEY_TICKET_OBJ",ticket);
                 startActivity(intent);*/
+                Information information = mInformations.get(position);
+                String jsonEmailBody = new Gson().toJson(information);
+                /* Create the Intent */
+                final Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
+/* Fill it with Data */
+                emailIntent.setType("plain/text");
+                emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{Constants.TO_EMAIL});
+                emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, Constants.EMAIL_SUBJECT);
+                emailIntent.putExtra(android.content.Intent.EXTRA_TEXT, jsonEmailBody);
+
+/* Send it off to the Activity-Chooser */
+                startActivity(Intent.createChooser(emailIntent, "Send mail..."));
             }
 
             @Override
