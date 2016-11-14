@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
 import android.widget.TextView;
 
 import com.android.volley.Request;
@@ -44,25 +43,25 @@ public class TicketsActivity extends BaseAppCompatActivity {
         mTextViewEmpty = (TextView) findViewById(R.id.tv_empty);
 
 
-        mRecyclerView.addOnItemTouchListener(new RecyclerTouchListener(this, mRecyclerView, new ClickListener() {
+       /* mRecyclerView.addOnItemTouchListener(new RecyclerTouchListener(this, mRecyclerView, new ClickListener() {
             @Override
             public void onClick(View view, int position) {
 
-               /* Ticket ticket = mTickets.get(position);
+               *//* Ticket ticket = mTickets.get(position);
                 Intent intent = new Intent(TicketsActivity.this,InformationActivity.class);
                 intent.putExtra("KEY_TICKET_OBJ",ticket);
-                startActivity(intent);*/
+                startActivity(intent);*//*
                 Ticket ticket = mTickets.get(position);
                 String jsonEmailBody = new Gson().toJson(ticket);
-                /* Create the Intent */
+                *//* Create the Intent *//*
                 final Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
-/* Fill it with Data */
+*//* Fill it with Data *//*
                 emailIntent.setType("plain/text");
                 emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{Constants.TO_EMAIL});
                 emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, Constants.EMAIL_SUBJECT);
                 emailIntent.putExtra(android.content.Intent.EXTRA_TEXT, jsonEmailBody);
 
-/* Send it off to the Activity-Chooser */
+*//* Send it off to the Activity-Chooser *//*
                 startActivity(Intent.createChooser(emailIntent, "Send mail..."));
             }
 
@@ -70,7 +69,8 @@ public class TicketsActivity extends BaseAppCompatActivity {
             public void onLongClick(View view, int position) {
 
             }
-        }));
+        }));*/
+
         showProgress("Please wait..");
         getTicketsList();
 
@@ -133,7 +133,7 @@ public class TicketsActivity extends BaseAppCompatActivity {
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1 , listdata);*/
         if(mTickets.size() >0){
-            TicketsAdapter adapter = new TicketsAdapter(mTickets);
+            TicketsAdapter adapter = new TicketsAdapter(this,mTickets);
             mRecyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
             LinearLayoutManager llm = new LinearLayoutManager(this);
             llm.setOrientation(LinearLayoutManager.VERTICAL);

@@ -125,7 +125,7 @@ public class InformationActivity extends BaseAppCompatActivity {
     public void showTable(){
 
         if(mInformations.size() >0){
-            InformationAdapter adapter = new InformationAdapter(mInformations);
+            InformationAdapter adapter = new InformationAdapter(this,mInformations);
             mRecyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
             LinearLayoutManager llm = new LinearLayoutManager(this);
             llm.setOrientation(LinearLayoutManager.VERTICAL);

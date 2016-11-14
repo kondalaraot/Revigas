@@ -2,68 +2,186 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
     android:background="@drawable/custom_bg"
     android:clickable="true"
+    android:orientation="vertical"
     android:padding="10dp">
 
 
-    <TextView
-        android:id="@+id/tv_patient_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        android:text="Patient Name"
+    <ImageView
+        android:id="@+id/iv_email"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="end|right"
+        android:src="@drawable/mail_icon"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingLeft="10dp">
+    <View style="@style/LineStyle">
 
-        <TextView
-            android:id="@+id/tv_adm_type"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Admiss Type" />
-
-        <TextView
-            android:id="@+id/tv_room_no"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Room #" />
-
-        <TextView
-            android:id="@+id/tv_facility_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Facility" />
-
-    </LinearLayout>
+    </View>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingLeft="10dp">
+        android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/tv_adm_reason"
+        <LinearLayout
+            android:id="@+id/labels"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Admission Reason" />
+            android:gravity="end|right"
+           android:layout_weight="1"
+            android:orientation="vertical"
+            android:paddingLeft="10dp">
 
-        <TextView
-            android:id="@+id/tv_admi_date"
-            android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/label_id"
+                style="@style/LabelStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:text="ID  " />
+
+
+            <TextView
+                android:id="@+id/label_id_user"
+                style="@style/LabelStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:text="ID USER  " />
+
+
+            <TextView
+                android:id="@+id/label_number"
+                style="@style/LabelStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:text="Number  " />
+
+            <TextView
+                android:id="@+id/label_direction"
+                style="@style/LabelStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:gravity="right"
+                android:text="DIRECTION " />
+
+            <TextView
+                android:id="@+id/label_estado"
+                style="@style/LabelStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:text="ESTADO  " />
+
+            <TextView
+                android:id="@+id/label_tipo"
+                style="@style/LabelStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:text="Tipo  " />
+
+            <TextView
+                android:id="@+id/label_fecha"
+                style="@style/LabelStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:text="Fecha  " />
+
+            <TextView
+                android:id="@+id/label_observation"
+                style="@style/LabelStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:text="Observation  " />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Adm Date" />
+            android:layout_weight="6"
+            android:orientation="vertical"
+            android:paddingLeft="10dp">
+
+            <TextView
+                android:id="@+id/id_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:text="1" />
+
+            <TextView
+                android:id="@+id/id_user_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:text="11" />
+
+            <TextView
+                android:id="@+id/number_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:text="A00012458" />
+
+
+            <TextView
+                android:id="@+id/direction_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:text="casdel ohm" />
+
+
+            <TextView
+                android:id="@+id/estado_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:text="atendioa" />
+            <TextView
+                android:id="@+id/tipo_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:text="CORRECTIVA" />
+            <TextView
+                android:id="@+id/fecha_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:text="atendioa" />
+            <TextView
+                android:id="@+id/observ_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:text="Limana unvacino javaier" />
+
+        </LinearLayout>
     </LinearLayout>
-
 </LinearLayout>

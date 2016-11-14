@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Revigas</string>
     <string name="error_field_required">field is required</string>
+    <string name="logout">Logout</string>
+    <string name="title_tickets">Historial del cliente</string>
+    <string name="title_information">Obras abiertas</string>
 </resources>

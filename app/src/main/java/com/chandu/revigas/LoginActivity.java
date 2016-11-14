@@ -13,7 +13,6 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONException;
@@ -21,9 +20,9 @@ import org.json.JSONObject;
 
 public class LoginActivity extends BaseAppCompatActivity {
 
-    private static final String TAG ="LoginActivity" ;
+    private static final String TAG = "LoginActivity";
     //    String loginURL = "http://192.168.1.36/~Chandu/Login/login.php";
-    String loginURL = Constants.HOST+"api/login.php";
+    String loginURL = Constants.HOST + "api/login.php";
     RequestQueue requestQueue;
     Button login;
     String mUserEmail;
@@ -37,22 +36,16 @@ public class LoginActivity extends BaseAppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-
     }
 
 
     public void showHome(View v) {
-
         mUserNameField = (EditText) findViewById(R.id.username);
-         mPasswordField = (EditText) findViewById(R.id.password);
-       attemptLogin();
+        mPasswordField = (EditText) findViewById(R.id.password);
+        attemptLogin();
     }
 
     private void attemptLogin() {
-        /*if (mAuthTask != null) {
-            return;
-        }*/
-
         // Reset errors.
         mUserNameField.setError(null);
         mPasswordField.setError(null);
@@ -64,14 +57,7 @@ public class LoginActivity extends BaseAppCompatActivity {
         boolean cancel = false;
         View focusView = null;
 
-        // Check for a valid password, if the user entered one.
-        /*if (!TextUtils.isEmpty(password) ) {
-            mPasswordField.setError("Invalid password");
-            focusView = mPasswordField;
-            cancel = true;
-        }
-*/
-        // Check for a valid mobile number.
+        // Check for a valid email number.
         if (TextUtils.isEmpty(mUserEmail)) {
             mUserNameField.setError(getString(R.string.error_field_required));
             focusView = mUserNameField;
@@ -80,8 +66,7 @@ public class LoginActivity extends BaseAppCompatActivity {
             mPhoneNoView.setError(getString(R.string.error_invalid_mobile));
             focusView = mPhoneNoView;
             cancel = true;
-        }*/
-        if (TextUtils.isEmpty(mPassword)) {
+        }*/ else if (TextUtils.isEmpty(mPassword)) {
             mPasswordField.setError(getString(R.string.error_field_required));
             focusView = mPasswordField;
             cancel = true;
@@ -92,37 +77,44 @@ public class LoginActivity extends BaseAppCompatActivity {
             // form field with an error.
             focusView.requestFocus();
         } else {
-            // Show a progress spinner, and kick off a background task to
-            // perform the user login attempt.
-//            NetworkManager.getInstance().postRequest(Constants.API_LOGIN,getParams(),this);
 
             showProgress("Logging in,please wait...");
             checkLoginWith();
+           /* Intent i = new Intent(LoginActivity.this, Home.class);
+            i.putExtra("user_id", "11");
+            startActivity(i);*/
         }
     }
 
-    public void checkLoginWith (){
+    public void checkLoginWith() {
         requestQueue = Volley.newRequestQueue(this);
-        String params = String.format("username=%s&password=%s", mUserEmail, mPassword);
-        Log.d(TAG,"login  "+loginURL);
-        Log.d(TAG,"params "+params);
-        final JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, loginURL, params , new Response.Listener<JSONObject>() {
+        String params = String.format("username=%s&password=%s", mUserNameField.getText().toString(), mPasswordField.getText().toString());
+        Log.d(TAG, "login  " + loginURL);
+// POST parameters
+       /* Map<String, String> params = new HashMap<String, String>();
+        params.put("username", mUserEmail);
+        params.put("password", mPassword);*/
+        Log.d(TAG, "params " + params.toString());
+
+
+        final JsonObjectRequestHeaders request = new JsonObjectRequestHeaders(Request.Method.POST, loginURL, params, new Response.Listener<JSONObject>() {
 
             @Override
             public void onResponse(JSONObject response) {
-                    dismissProgress();
-                Log.d(TAG,"resp "+response.toString());
-
-                Intent i = new Intent(LoginActivity.this , Home.class);
-
-                String user_id  = null;
+                dismissProgress();
+                Log.d(TAG, "resp " + response.toString());
+                Intent i = new Intent(LoginActivity.this, Home.class);
+                String user_id = null;
                 try {
-                    user_id = response.getString("email");
+//                    JSONObject jsonObject = new JSONObject(response);
+//                    user_id = response.getString("email");
+                    user_id = response.getString("IDUSER");
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                i.putExtra("user_id",user_id);
+                i.putExtra("user_id", user_id);
                 startActivity(i);
+                finish();
             }
         }, new Response.ErrorListener() {
             @Override
@@ -135,12 +127,13 @@ public class LoginActivity extends BaseAppCompatActivity {
             }
         }
 
-        ) {
+        ) /*{
             @Override
             public String getBodyContentType() {
-                return "application/x-www-form-urlencoded; charset=UTF-8";
+//                return "application/x-www-form-urlencoded; charset=UTF-8";
+                return "application/json; charset=utf-8";
             }
-        };
+        }*/;
 
         requestQueue.add(request);
     }
