@@ -64,6 +64,15 @@
                 android:text="Poliza  " />
 
             <TextView
+                android:id="@+id/label_estado"
+                style="@style/LabelStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:text="Estado  " />
+
+            <TextView
                 android:id="@+id/label_obra"
                 style="@style/LabelStyle"
                 android:layout_width="wrap_content"
@@ -82,14 +91,14 @@
                 android:layout_marginBottom="5dp"
                 android:text="Date of revision " />
 
-            <TextView
+          <!--  <TextView
                 android:id="@+id/label_tipo"
                 style="@style/LabelStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
-                android:text="Tipo  " />
+                android:text="Tipo  " />-->
 
             <TextView
                 android:id="@+id/label_direction"
@@ -125,7 +134,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
-                android:text="1" />
+                android:text="ID val" />
 
             <TextView
                 android:id="@+id/id_user_value"
@@ -133,7 +142,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
-                android:text="11" />
+                android:text="id user value" />
 
             <TextView
                 android:id="@+id/poliza_value"
@@ -141,7 +150,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
-                android:text="A00012458" />
+                android:text="poliza value" />
+
 
 
             <TextView
@@ -150,7 +160,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
-                android:text="casdel ohm" />
+                android:text="estado value" />
 
 
             <TextView
@@ -159,28 +169,28 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
-                android:text="atendioa" />
+                android:text="obra value" />
             <TextView
                 android:id="@+id/dateOfrev_value"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
-                android:text="CORRECTIVA" />
+                android:text="date of rev value" />
             <TextView
                 android:id="@+id/direction_value"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
-                android:text="atendioa" />
+                android:text="direc value" />
             <TextView
                 android:id="@+id/date_of_alert_value"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
-                android:text="2017-11-08" />
+                android:text="alert value" />
 
         </LinearLayout>
     </LinearLayout>

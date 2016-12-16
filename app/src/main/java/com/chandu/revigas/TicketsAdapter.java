@@ -2,6 +2,7 @@ package com.chandu.revigas;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
 import android.util.Log;
@@ -78,6 +79,12 @@ public class TicketsAdapter extends RecyclerView.Adapter<TicketsAdapter.MyViewHo
         holder.mFechaValue.setText(ticket.getFecha());
         holder.mObservValue.setText(ticket.getObservacion());
         holder.mIvEmail.setTag(ticket);
+        if(ticket.getESTADO().equalsIgnoreCase("ABIERTO")){
+            holder.mEstadoValue.setTextColor(ContextCompat.getColor(mContext, R.color.colorPrimary));
+        }else{
+            holder.mEstadoValue.setTextColor(ContextCompat.getColor(mContext, R.color.red));
+
+        }
 
         holder.mIvEmail.setOnClickListener(new View.OnClickListener() {
             @Override

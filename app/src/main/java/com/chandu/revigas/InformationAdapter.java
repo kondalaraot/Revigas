@@ -2,6 +2,7 @@ package com.chandu.revigas;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
 import android.util.Log;
@@ -43,6 +44,7 @@ public class InformationAdapter extends RecyclerView.Adapter<InformationAdapter.
             super(view);
 //            view.setOnClickListener(this);
             mIvEmail = (ImageView)view.findViewById( R.id.iv_email );
+
             mIdValue = (TextView)view.findViewById( R.id.id_value );
             mIdUserValue = (TextView)view.findViewById( R.id.id_user_value );
             mPolizaValue = (TextView)view.findViewById( R.id.poliza_value );
@@ -72,10 +74,19 @@ public class InformationAdapter extends RecyclerView.Adapter<InformationAdapter.
         Information information = mInformations.get(position);
         holder.mIdUserValue.setText(information.getIDUSER());
         holder.mIdValue.setText(information.getID());
+        holder.mPolizaValue.setText(information.getPoliza());
         holder.mEstadoValue.setText(information.getEstado());
         holder.mObraValue.setText(information.getObra());
         holder.mDateOfrevValue.setText(information.getDate_of_revision());
+        holder.mDirectionValue.setText(information.getDirection());
         holder.mDateOfAlertValue.setText(information.getDate_of_alert());
+
+        if(information.getEstado().equalsIgnoreCase("ABIERTO")){
+            holder.mEstadoValue.setTextColor(ContextCompat.getColor(mContext, R.color.colorPrimary));
+        }else {
+            holder.mEstadoValue.setTextColor(ContextCompat.getColor(mContext, R.color.red));
+
+        }
 
         holder.mIvEmail.setOnClickListener(new View.OnClickListener() {
             @Override

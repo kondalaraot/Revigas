@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -28,6 +29,8 @@ import static android.view.View.VISIBLE;
 public class InformationActivity extends BaseAppCompatActivity {
 
 //    String informationURL = "http://192.168.1.36/~Chandu/Login/information.php";
+    public static final String TAG ="InformationActivity" ;
+
     String informationURL = Constants.HOST+"information.php";
 
     RequestQueue requestQueue;
@@ -83,13 +86,15 @@ public class InformationActivity extends BaseAppCompatActivity {
 
         final JsonArrayRequest request = new JsonArrayRequest(Request.Method.POST, informationURL, params , new Response.Listener<JSONArray>() {
 
+
             @Override
             public void onResponse(JSONArray response) {
 
                 dismissProgress();
                 JSONArray ticketsArray = (JSONArray)response;
-
                 if (ticketsArray != null) {
+                    Log.d(TAG,"ticketsArrayv"+ticketsArray.toString());
+
                     Gson gson = new Gson();
                     Type listType = new TypeToken<List<Information>>(){}.getType();
                     mInformations = gson.fromJson(ticketsArray.toString(), listType);
