@@ -1,11 +1,9 @@
-package com.chandu.revigas;
+package com.jose.revigas;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.view.View;
 import android.widget.TextView;
 
 import com.android.volley.Request;
@@ -26,44 +24,44 @@ import java.util.List;
 import static android.view.View.VISIBLE;
 
 
-public class InformationActivity extends BaseAppCompatActivity {
+public class TicketsActivity extends BaseAppCompatActivity {
 
-//    String informationURL = "http://192.168.1.36/~Chandu/Login/information.php";
-    public static final String TAG ="InformationActivity" ;
 
-    String informationURL = Constants.HOST+"information.php";
+//    String ticketsURL = "http://192.168.1.36/~Chandu/Login/tickets.php";
 
+    String ticketsURL = Constants.HOST+"tickets.php";
     RequestQueue requestQueue;
-    ArrayList<Information> mInformations = new ArrayList<Information>();
+
+    ArrayList<Ticket> mTickets = new ArrayList<Ticket>();
     RecyclerView mRecyclerView;
     TextView mTextViewEmpty;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_information);
-        mRecyclerView = (RecyclerView) findViewById(R.id.lv_informations);
+        setContentView(R.layout.activity_tickets);
+        mRecyclerView = (RecyclerView) findViewById(R.id.lv_tickets);
         mTextViewEmpty = (TextView) findViewById(R.id.tv_empty);
-        mRecyclerView.addOnItemTouchListener(new RecyclerTouchListener(this, mRecyclerView, new ClickListener() {
+
+
+       /* mRecyclerView.addOnItemTouchListener(new RecyclerTouchListener(this, mRecyclerView, new ClickListener() {
             @Override
             public void onClick(View view, int position) {
 
-               /* Ticket ticket = mTickets.get(position);
-                Intent intent = new Intent(InformationActivity.this,InformationActivity.class);
+               *//* Ticket ticket = mTickets.get(position);
+                Intent intent = new Intent(TicketsActivity.this,InformationActivity.class);
                 intent.putExtra("KEY_TICKET_OBJ",ticket);
-                startActivity(intent);*/
-                Information information = mInformations.get(position);
-                String jsonEmailBody = new Gson().toJson(information);
-                /* Create the Intent */
+                startActivity(intent);*//*
+                Ticket ticket = mTickets.get(position);
+                String jsonEmailBody = new Gson().toJson(ticket);
+                *//* Create the Intent *//*
                 final Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
-/* Fill it with Data */
+*//* Fill it with Data *//*
                 emailIntent.setType("plain/text");
                 emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{Constants.TO_EMAIL});
                 emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, Constants.EMAIL_SUBJECT);
                 emailIntent.putExtra(android.content.Intent.EXTRA_TEXT, jsonEmailBody);
 
-/* Send it off to the Activity-Chooser */
+*//* Send it off to the Activity-Chooser *//*
                 startActivity(Intent.createChooser(emailIntent, "Send mail..."));
             }
 
@@ -71,38 +69,39 @@ public class InformationActivity extends BaseAppCompatActivity {
             public void onLongClick(View view, int position) {
 
             }
-        }));
+        }));*/
+
         showProgress("Please wait..");
-        getInformationList();
+        getTicketsList();
 
     }
 
-    public void getInformationList(){
+
+    public void getTicketsList(){
         requestQueue = Volley.newRequestQueue(this);
 
         Intent inte  = getIntent();
         final String user_id = inte.getStringExtra("user_id");
         String params = String.format("user_id=%s",user_id);
 
-        final JsonArrayRequest request = new JsonArrayRequest(Request.Method.POST, informationURL, params , new Response.Listener<JSONArray>() {
 
+
+        final JsonArrayRequest request = new JsonArrayRequest(Request.Method.POST, ticketsURL, params , new Response.Listener<JSONArray>() {
 
             @Override
             public void onResponse(JSONArray response) {
 
                 dismissProgress();
                 JSONArray ticketsArray = (JSONArray)response;
-                if (ticketsArray != null) {
-                    Log.d(TAG,"ticketsArrayv"+ticketsArray.toString());
 
+                if (ticketsArray != null) {
                     Gson gson = new Gson();
-                    Type listType = new TypeToken<List<Information>>(){}.getType();
-                    mInformations = gson.fromJson(ticketsArray.toString(), listType);
+                    Type listType = new TypeToken<List<Ticket>>(){}.getType();
+                    mTickets = gson.fromJson(ticketsArray.toString(), listType);
 
                 }
 
                 showTable();
-
 
             }
         }, new Response.ErrorListener() {
@@ -124,13 +123,17 @@ public class InformationActivity extends BaseAppCompatActivity {
 
 
 
-
     }
+
 
     public void showTable(){
 
-        if(mInformations.size() >0){
-            InformationAdapter adapter = new InformationAdapter(this,mInformations);
+       /* Log.d("entries", String.valueOf(listdata));
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1 , listdata);*/
+        if(mTickets.size() >0){
+            TicketsAdapter adapter = new TicketsAdapter(this,mTickets);
             mRecyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
             LinearLayoutManager llm = new LinearLayoutManager(this);
             llm.setOrientation(LinearLayoutManager.VERTICAL);
@@ -141,8 +144,8 @@ public class InformationActivity extends BaseAppCompatActivity {
             mTextViewEmpty.setVisibility(VISIBLE);
         }
 
-    }
 
+    }
 
 
 

@@ -1,4 +1,4 @@
-package com.chandu.revigas;
+package com.jose.revigas;
 
 /**
  * Created by KTirumalsetty on 11/11/2016.

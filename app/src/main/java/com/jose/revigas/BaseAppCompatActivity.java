@@ -1,4 +1,4 @@
-package com.chandu.revigas;
+package com.jose.revigas;
 
 import android.annotation.TargetApi;
 import android.app.ProgressDialog;
