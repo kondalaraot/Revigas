@@ -1,6 +1,7 @@
 package com.chandu.revigas;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -16,7 +17,7 @@ public class Home extends AppCompatActivity {
 
 
 //    String[] listArray = {"Tickets","Information"};
-    String[] listArray = {"Historial del cliente","Obras abiertas"};
+    String[] listArray = {"Historial del cliente","Obras abiertas","Energía Solar"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +50,12 @@ public class Home extends AppCompatActivity {
 
                     Intent i = new Intent(Home.this,InformationActivity.class);
                     i.putExtra("user_id",user_id);
+                    startActivity(i);
+
+                }else if (position == 2){
+
+                    Intent i = new Intent(Intent.ACTION_VIEW,
+                            Uri.parse("http://185.68.110.84:3030"));
                     startActivity(i);
 
                 }
