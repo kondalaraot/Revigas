@@ -14,6 +14,10 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import static android.content.ContentValues.TAG;
@@ -27,11 +31,15 @@ public class TicketsAdapter extends RecyclerView.Adapter<TicketsAdapter.MyViewHo
     private List<Ticket> mTickets;
     private Context mContext;
 
+    DateFormat fromFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+    SimpleDateFormat toDateFormat = new SimpleDateFormat("dd-MM-yyyy");
+
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
         private ImageView mIvEmail;
-        private TextView mIdValue;
-        private TextView mIdUserValue;
+//        private TextView mIdValue;
+//        private TextView mIdUserValue;
         private TextView mNumberValue;
         private TextView mDirectionValue;
         private TextView mEstadoValue;
@@ -39,12 +47,15 @@ public class TicketsAdapter extends RecyclerView.Adapter<TicketsAdapter.MyViewHo
         private TextView mFechaValue;
         private TextView mObservValue;
 
+
+
+
         public MyViewHolder(View view) {
             super(view);
 //            view.setOnClickListener(this);
             mIvEmail = (ImageView)view.findViewById( R.id.iv_email );
-            mIdValue = (TextView)view.findViewById( R.id.id_value );
-            mIdUserValue = (TextView)view.findViewById( R.id.id_user_value );
+//            mIdValue = (TextView)view.findViewById( R.id.id_value );
+//            mIdUserValue = (TextView)view.findViewById( R.id.id_user_value );
             mNumberValue = (TextView)view.findViewById( R.id.number_value );
             mDirectionValue = (TextView)view.findViewById( R.id.direction_value );
             mEstadoValue = (TextView)view.findViewById( R.id.estado_value );
@@ -70,13 +81,18 @@ public class TicketsAdapter extends RecyclerView.Adapter<TicketsAdapter.MyViewHo
     @Override
     public void onBindViewHolder(MyViewHolder holder, final int position) {
         Ticket ticket = mTickets.get(position);
-        holder.mIdValue.setText(ticket.getID());
-        holder.mIdUserValue.setText(ticket.getIDUSER());
+//        holder.mIdValue.setText(ticket.getID());
+//        holder.mIdUserValue.setText(ticket.getIDUSER());
         holder.mNumberValue.setText(ticket.getNumber());
         holder.mDirectionValue.setText(ticket.getDirection());
         holder.mEstadoValue.setText(ticket.getESTADO());
         holder.mTipoValue.setText(ticket.getTipo());
-        holder.mFechaValue.setText(ticket.getFecha());
+        try {
+            Date dateFromat = fromFormat.parse(ticket.getFecha());
+            holder.mFechaValue.setText(toDateFormat.format(dateFromat));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         holder.mObservValue.setText(ticket.getObservacion());
         holder.mIvEmail.setTag(ticket);
         if(ticket.getESTADO().equalsIgnoreCase("ABIERTO")){
@@ -90,40 +106,34 @@ public class TicketsAdapter extends RecyclerView.Adapter<TicketsAdapter.MyViewHo
             @Override
             public void onClick(View v) {
                 Log.d(TAG,"Position "+position);
-                 /* Ticket ticket = mTickets.get(position);
-                Intent intent = new Intent(TicketsActivity.this,InformationActivity.class);
-                intent.putExtra("KEY_TICKET_OBJ",ticket);
-                startActivity(intent);*/
+
                 Ticket ticket = mTickets.get(position);
                 String jsonEmailBody = new Gson().toJson(ticket);
-                /* Create the Intent */
-                String htmlBody = "<html> <body> " +
-                        "<font color='#ff33b5e5'>ID </font>" +ticket.getID()+"</br>"+
-                        "<font color='#ff33b5e5'>ID User </font>" +ticket.getIDUSER()+"</br>"+
-                        "<font color='#ff33b5e5'>Number </font>" +ticket.getNumber()+"</br>"+
-                        "<font color='#ff33b5e5'>Direction </font>" +ticket.getDirection()+"</br>"+
-                        "<font color='#ff33b5e5'>ESTADO </font>" +ticket.getESTADO()+"</br>"+
-                        "<font color='#ff33b5e5'>Tipo </font>" +ticket.getTipo()+"</br>"+
-                        "<font color='#ff33b5e5'>Fecha </font>" +ticket.getFecha()+"</br>"+
-                        "<font color='#ff33b5e5'>Observation </font>" +ticket.getObservacion()+"</br>"+
-                        "</body></html>";
+
                 final Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
-/* Fill it with Data */
                 emailIntent.setType("plain/text");
                 emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{Constants.TO_EMAIL});
                 emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, Constants.EMAIL_SUBJECT);
-//                emailIntent.putExtra(android.content.Intent.EXTRA_TEXT, Html.fromHtml(htmlBody));
+                Date dateFromat = null;
+                String fetchaDateFormatted ="";
+                try {
+                    dateFromat = fromFormat.parse(ticket.getFecha());
+                    fetchaDateFormatted = toDateFormat.format(dateFromat);
+
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
                 emailIntent.putExtra(
                         Intent.EXTRA_TEXT,
                         Html.fromHtml(new StringBuilder()
-                                .append("<p><b>ID : </b>"+ ticket.getID()+"</p>")
-                                .append("<p><b>ID User : </b>"+ ticket.getIDUSER()+"</p>")
-                                .append("<p><b>Number : </b>"+ ticket.getNumber()+"</p>")
-                                .append("<p><b>Direction : </b>"+ ticket.getDirection()+"</p>")
+                               /* .append("<p><b>ID : </b>"+ ticket.getID()+"</p>")
+                                .append("<p><b>ID User : </b>"+ ticket.getIDUSER()+"</p>")*/
+                                .append("<p><b>Número : </b>"+ ticket.getNumber()+"</p>")
+                                .append("<p><b>DIRECCIÓN : </b>"+ ticket.getDirection()+"</p>")
                                 .append("<p><b>ESTADO : </b>"+ ticket.getESTADO()+"</p>")
                                 .append("<p><b>Tipo : </b>"+ ticket.getTipo()+"</p>")
-                                .append("<p><b>Fecha : </b>"+ ticket.getFecha()+"</p>")
-                                .append("<p><b>Observation : </b>"+ ticket.getObservacion()+"</p>")
+                                .append("<p><b>Fecha : </b>"+ fetchaDateFormatted+"</p>")
+                                .append("<p><b>Observación : </b>"+ ticket.getObservacion()+"</p>")
                                /* .append("<a>http://www.google.com</a>")
                                 .append("<small><p>More content</p></small>")*/
                                 .toString())

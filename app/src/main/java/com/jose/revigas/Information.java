@@ -54,6 +54,7 @@ public class Information implements Serializable {
     }
 
     public String getDate_of_revision() {
+
         return date_of_revision;
     }
 

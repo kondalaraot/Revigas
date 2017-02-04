@@ -43,33 +43,7 @@ public class TicketsActivity extends BaseAppCompatActivity {
         mTextViewEmpty = (TextView) findViewById(R.id.tv_empty);
 
 
-       /* mRecyclerView.addOnItemTouchListener(new RecyclerTouchListener(this, mRecyclerView, new ClickListener() {
-            @Override
-            public void onClick(View view, int position) {
 
-               *//* Ticket ticket = mTickets.get(position);
-                Intent intent = new Intent(TicketsActivity.this,InformationActivity.class);
-                intent.putExtra("KEY_TICKET_OBJ",ticket);
-                startActivity(intent);*//*
-                Ticket ticket = mTickets.get(position);
-                String jsonEmailBody = new Gson().toJson(ticket);
-                *//* Create the Intent *//*
-                final Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
-*//* Fill it with Data *//*
-                emailIntent.setType("plain/text");
-                emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{Constants.TO_EMAIL});
-                emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, Constants.EMAIL_SUBJECT);
-                emailIntent.putExtra(android.content.Intent.EXTRA_TEXT, jsonEmailBody);
-
-*//* Send it off to the Activity-Chooser *//*
-                startActivity(Intent.createChooser(emailIntent, "Send mail..."));
-            }
-
-            @Override
-            public void onLongClick(View view, int position) {
-
-            }
-        }));*/
 
         showProgress("Please wait..");
         getTicketsList();

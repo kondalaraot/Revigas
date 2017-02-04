@@ -34,7 +34,7 @@
             android:orientation="vertical"
             android:paddingLeft="10dp">
 
-            <TextView
+         <!--   <TextView
                 android:id="@+id/label_id"
                 style="@style/LabelStyle"
                 android:layout_width="wrap_content"
@@ -52,7 +52,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
                 android:text="ID USER  " />
-
+-->
 
             <TextView
                 android:id="@+id/label_poliza"
@@ -80,7 +80,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
                 android:gravity="right"
-                android:text="obra " />
+                android:text="Obra " />
 
             <TextView
                 android:id="@+id/label_dateOfRev"
@@ -89,7 +89,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
-                android:text="Date of revision " />
+                android:text="Fecha de revision " />
 
           <!--  <TextView
                 android:id="@+id/label_tipo"
@@ -107,7 +107,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
-                android:text="Direction  " />
+                android:text="Dirección  " />
 
             <TextView
                 android:id="@+id/label_dateOfAlert"
@@ -116,7 +116,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
-                android:text="Date of aletr  " />
+                android:text="Fecha Aviso  " />
 
 
         </LinearLayout>
@@ -128,7 +128,7 @@
             android:orientation="vertical"
             android:paddingLeft="10dp">
 
-            <TextView
+           <!-- <TextView
                 android:id="@+id/id_value"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -142,7 +142,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
-                android:text="id user value" />
+                android:text="id user value" />-->
 
             <TextView
                 android:id="@+id/poliza_value"
