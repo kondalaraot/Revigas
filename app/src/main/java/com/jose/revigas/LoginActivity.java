@@ -22,7 +22,7 @@ public class LoginActivity extends BaseAppCompatActivity {
 
     private static final String TAG = "LoginActivity";
     //    String loginURL = "http://192.168.1.36/~Chandu/Login/login.php";
-    String loginURL = Constants.HOST + "api/login.php";
+    String loginURL = Constants.HOST + "login.php";
     RequestQueue requestQueue;
     Button login;
     String mUserEmail;

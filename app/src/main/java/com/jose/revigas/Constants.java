@@ -6,7 +6,7 @@ package com.jose.revigas;
 
 public class Constants {
 
-    public static final String HOST ="http://revigas.es/";
+    public static final String HOST ="http://revigas.es/api/";
     public static final String TO_EMAIL ="admin@revigas.com";
     public static final String EMAIL_SUBJECT ="Revigas";
 }

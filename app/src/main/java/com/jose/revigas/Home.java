@@ -35,9 +35,10 @@ import java.util.List;
 public class Home extends BaseAppCompatActivity {
 
 
-//    String[] listArray = {"Tickets","Information"};
+    private static final String TAG = "HOME";
+    //    String[] listArray = {"Tickets","Information"};
     String[] listArray = {"Historial del cliente","Obras abiertas","Energía Solar",""};
-    String ticketsURL = Constants.HOST+"tickets.php";
+    String ticketsURL = Constants.HOST+"/tickets.php";
     RequestQueue requestQueue;
 
     ArrayList<Ticket> mTickets = new ArrayList<Ticket>();
@@ -113,6 +114,7 @@ public class Home extends BaseAppCompatActivity {
     }
 
     public void getTicketsList(){
+        showProgress("Please Wait..");
         requestQueue = Volley.newRequestQueue(this);
 
         Intent inte  = getIntent();
@@ -120,6 +122,8 @@ public class Home extends BaseAppCompatActivity {
         String params = String.format("user_id=%s",user_id);
 
 
+        Log.d(TAG,"Url "+ticketsURL);
+        Log.d(TAG,"Url "+params);
 
         final JsonArrayRequest request = new JsonArrayRequest(Request.Method.POST, ticketsURL, params , new Response.Listener<JSONArray>() {
 
@@ -127,6 +131,7 @@ public class Home extends BaseAppCompatActivity {
             public void onResponse(JSONArray response) {
 
                 dismissProgress();
+                Log.d(TAG,"Resp "+response.toString());
                 JSONArray ticketsArray = (JSONArray)response;
 
                 if (ticketsArray != null) {
@@ -136,16 +141,16 @@ public class Home extends BaseAppCompatActivity {
 //                    SimpleDateFormat formatter = new SimpleDateFormat("yyyy-mm-DD");
                     SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
                     List<Date> datesList = new ArrayList<Date>();
-
                     for (Ticket ticket : mTickets) {
                         setTitle(ticket.getIDUSER());
                         try {
                             Date date = formatter.parse(ticket.getFecha());
                             datesList.add(date);
 
-                        } catch (ParseException e) {
+                        } catch (Exception e) {
                             e.printStackTrace();
                         }
+                        break;
 //                        ticket.getFecha();
                     }
                     Collections.sort(datesList);
