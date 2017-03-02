@@ -35,7 +35,10 @@ public class LoginActivity extends BaseAppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
+        mUserNameField = (EditText) findViewById(R.id.username);
+        mPasswordField = (EditText) findViewById(R.id.password);
+//        mUserNameField.setText("965633536");
+//        mPasswordField.setText("965633536");
     }
 
 

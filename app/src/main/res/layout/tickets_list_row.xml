@@ -7,7 +7,6 @@
     android:orientation="vertical"
     android:padding="10dp">
 
-
     <ImageView
         android:id="@+id/iv_email"
         android:layout_width="50dp"
@@ -19,169 +18,169 @@
     <View style="@style/LineStyle">
 
     </View>
-
-    <LinearLayout
+    <TableLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content">
 
-        <LinearLayout
-            android:id="@+id/labels"
+        <TableRow
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="end|right"
-           android:layout_weight="1"
-            android:orientation="vertical"
-            android:paddingLeft="10dp">
-
-           <!-- <TextView
-                android:id="@+id/label_id"
-                style="@style/LabelStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:text="ID  " />-->
-
-
-           <!-- <TextView
-                android:id="@+id/label_id_user"
-                style="@style/LabelStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:text="ID USER  " />-->
-
+            android:layout_height="wrap_content">
 
             <TextView
                 android:id="@+id/label_number"
                 style="@style/LabelStyle"
-                android:layout_width="wrap_content"
+                android:text="Número  "
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+
+                />
+
+            <TextView
+                android:layout_weight="1"
+                android:layout_gravity="left|center_vertical"
+                android:layout_width="0dp"
+
+                android:id="@+id/number_value"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
-                android:text="Número  " />
+                android:text="A00012458" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
 
             <TextView
+                android:layout_weight="1"
+                android:layout_gravity="center_vertical"
                 android:id="@+id/label_direction"
                 style="@style/LabelStyle"
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
                 android:gravity="right"
                 android:text="DIRECCIÓN " />
 
+
             <TextView
+                android:layout_weight="1"
+                android:layout_gravity="left|center_vertical"
+                android:id="@+id/direction_value"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:text="casdel ohm long text sfljlfsdfkjslkjsgsfkjskfjsf/jsfgkgjdlkg sgjslgj" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
                 android:id="@+id/label_estado"
                 style="@style/LabelStyle"
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
                 android:text="ESTADO  " />
 
             <TextView
+                android:layout_weight="1"
+                android:layout_gravity="left|center_vertical"
+                android:id="@+id/estado_value"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:text="atendioa" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_weight="1"
+                android:layout_gravity="right|center_vertical"
                 android:id="@+id/label_tipo"
                 style="@style/LabelStyle"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
                 android:text="Tipo  " />
-
             <TextView
-                android:id="@+id/label_fecha"
-                style="@style/LabelStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:text="Fecha  " />
-
-            <TextView
-                android:id="@+id/label_observation"
-                style="@style/LabelStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:text="Observación  " />
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="6"
-            android:orientation="vertical"
-            android:paddingLeft="10dp">
-
-          <!--  <TextView
-                android:id="@+id/id_value"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:text="1" />-->
-
-        <!--    <TextView
-                android:id="@+id/id_user_value"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:text="11" />-->
-
-            <TextView
-                android:id="@+id/number_value"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:text="A00012458" />
-
-
-            <TextView
-                android:id="@+id/direction_value"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:text="casdel ohm" />
-
-
-            <TextView
-                android:id="@+id/estado_value"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:text="atendioa" />
-            <TextView
+                android:layout_weight="1"
+                android:layout_gravity="left|center_vertical"
                 android:id="@+id/tipo_value"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
                 android:text="CORRECTIVA" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
             <TextView
+                android:layout_weight="1"
+                android:layout_gravity="right|center_vertical"
+                android:id="@+id/label_fecha"
+                style="@style/LabelStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:text="Fecha  " />
+            <TextView
+                android:layout_weight="1"
+                android:layout_gravity="left|center_vertical"
                 android:id="@+id/fecha_value"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
                 android:text="atendioa" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
             <TextView
+                android:layout_weight="1"
+                android:layout_gravity="right|center_vertical"
+                android:id="@+id/label_observation"
+                style="@style/LabelStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:text="Observación  " />
+            <TextView
+                android:layout_gravity="left|center_vertical"
+                android:layout_weight="1"
                 android:id="@+id/observ_value"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
                 android:text="Limana unvacino javaier" />
 
-        </LinearLayout>
-    </LinearLayout>
+
+        </TableRow>
+    </TableLayout>
+
+
 </LinearLayout>

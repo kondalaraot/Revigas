@@ -104,8 +104,8 @@ public class InformationAdapter extends RecyclerView.Adapter<InformationAdapter.
 
 //        holder.mDateOfAlertValue.setText(information.getDate_of_alert());
 
-        if(information.getEstado().equalsIgnoreCase("ABIERTO")){
-            holder.mEstadoValue.setTextColor(ContextCompat.getColor(mContext, R.color.colorPrimary));
+        if(information.getEstado().equalsIgnoreCase("Abierto") || information.getEstado().equalsIgnoreCase("ABIERTO")){
+            holder.mEstadoValue.setTextColor(ContextCompat.getColor(mContext, android.R.color.holo_green_light));
         }else {
             holder.mEstadoValue.setTextColor(ContextCompat.getColor(mContext, R.color.red));
 

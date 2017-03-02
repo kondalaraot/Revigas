@@ -95,8 +95,8 @@ public class TicketsAdapter extends RecyclerView.Adapter<TicketsAdapter.MyViewHo
         }
         holder.mObservValue.setText(ticket.getObservacion());
         holder.mIvEmail.setTag(ticket);
-        if(ticket.getESTADO().equalsIgnoreCase("ABIERTO")){
-            holder.mEstadoValue.setTextColor(ContextCompat.getColor(mContext, R.color.colorPrimary));
+        if(ticket.getESTADO().equalsIgnoreCase("Abierto") || ticket.getESTADO().equalsIgnoreCase("ABIERTO")){
+            holder.mEstadoValue.setTextColor(ContextCompat.getColor(mContext, android.R.color.holo_green_light));
         }else{
             holder.mEstadoValue.setTextColor(ContextCompat.getColor(mContext, R.color.red));
 
