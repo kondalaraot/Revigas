@@ -128,6 +128,7 @@ public class TicketsAdapter extends RecyclerView.Adapter<TicketsAdapter.MyViewHo
                         Html.fromHtml(new StringBuilder()
                                /* .append("<p><b>ID : </b>"+ ticket.getID()+"</p>")
                                 .append("<p><b>ID User : </b>"+ ticket.getIDUSER()+"</p>")*/
+                                .append("<p><b>Cuentenos brevemente que quiere de : </b>"+ ticket.getNumber()+"</p>")
                                 .append("<p><b>Número : </b>"+ ticket.getNumber()+"</p>")
                                 .append("<p><b>DIRECCIÓN : </b>"+ ticket.getDirection()+"</p>")
                                 .append("<p><b>ESTADO : </b>"+ ticket.getESTADO()+"</p>")

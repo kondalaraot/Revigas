@@ -37,7 +37,7 @@ public class LoginActivity extends BaseAppCompatActivity {
         setContentView(R.layout.activity_login);
         mUserNameField = (EditText) findViewById(R.id.username);
         mPasswordField = (EditText) findViewById(R.id.password);
-//        mUserNameField.setText("965633536");
+        mUserNameField.setText("965633536");
 //        mPasswordField.setText("965633536");
     }
 
